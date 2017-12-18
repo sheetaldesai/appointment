@@ -1,0 +1,38 @@
+<div class="container">
+    <nav>
+      <div class="navbar-right"> 
+         <a [routerLink]="['/logout']">Logout</a>
+      </div> 
+    </nav>
+    <div class="main">
+      <h3>Doctor's appointments</h3>
+      <div class="search">
+        <input type="text" placeholder="search">
+      </div>
+      <div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Patient Name</th>
+                <th>Complain</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let appt of appointments">
+                <td>{{appt['apptDate'] | date:"short"}}</td>
+                <td>{{appt['apptTime']}}</td>
+                <td>{{appt['patientName']}}</td>
+                <td>{{appt['complain']}}</td>
+                <td><button (click)="onDelete(appt)" [hidden]="loggedUser != appt['patientName']" >Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <form (submit)="onSubmit()" method="post">
+              <input type="submit" value="Make a New Appointment">
+          </form>
+      </div>
+    </div>
+  </div>
