@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class NewComponent implements OnInit {
 
   appointment = new Appointment();
+  today = Date.now();
 
   appointments = []
   invalidDate = {error:""}

@@ -8,6 +8,7 @@
           #aDate
           [value]="appointment.apptDate | date:'yyyy-MM-dd'" 
           (input)="appointment.apptDate=parseDate($event.target.value)" 
+          min="{{today | date:'yyyy-MM-dd'}}"
           required
           class="form-control"
         />
